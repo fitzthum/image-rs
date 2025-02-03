@@ -59,8 +59,8 @@ impl EvidenceProvider for AAEvidenceProvider {
     }
 
     /// Get the underlying Tee type
-    async fn get_tee_type(&self) -> Result<Tee> {
-        let req = GetTeeTypeRequest {
+    async fn get_tee_types(&self) -> Result<Vec<Tee>> {
+        let req = GetTeeTypesRequest {
             ..Default::default()
         };
         let res = self
@@ -72,8 +72,8 @@ impl EvidenceProvider for AAEvidenceProvider {
             .await
             .map_err(|e| Error::AAEvidenceProvider(format!("call ttrpc failed: {e}")))?;
 
-        let tee = serde_json::from_value(json!(res.tee))
-            .map_err(|e| Error::AAEvidenceProvider(format!("failed to parse Tee type: {e}")))?;
-        Ok(tee)
+        let tees = serde_json::from_value(json!(res.tees))
+            .map_err(|e| Error::AAEvidenceProvider(format!("failed to parse Tee types: {e}")))?;
+        Ok(tees)
     }
 }
