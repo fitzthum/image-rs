@@ -1381,38 +1381,38 @@ impl ::protobuf::reflect::ProtobufValue for UpdateConfigurationResponse {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:attestation_agent.GetTeeTypeRequest)
+// @@protoc_insertion_point(message:attestation_agent.GetTeeTypesRequest)
 #[derive(PartialEq,Clone,Default,Debug)]
-pub struct GetTeeTypeRequest {
+pub struct GetTeeTypesRequest {
     // special fields
-    // @@protoc_insertion_point(special_field:attestation_agent.GetTeeTypeRequest.special_fields)
+    // @@protoc_insertion_point(special_field:attestation_agent.GetTeeTypesRequest.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a GetTeeTypeRequest {
-    fn default() -> &'a GetTeeTypeRequest {
-        <GetTeeTypeRequest as ::protobuf::Message>::default_instance()
+impl<'a> ::std::default::Default for &'a GetTeeTypesRequest {
+    fn default() -> &'a GetTeeTypesRequest {
+        <GetTeeTypesRequest as ::protobuf::Message>::default_instance()
     }
 }
 
-impl GetTeeTypeRequest {
-    pub fn new() -> GetTeeTypeRequest {
+impl GetTeeTypesRequest {
+    pub fn new() -> GetTeeTypesRequest {
         ::std::default::Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::with_capacity(0);
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
-        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<GetTeeTypeRequest>(
-            "GetTeeTypeRequest",
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<GetTeeTypesRequest>(
+            "GetTeeTypesRequest",
             fields,
             oneofs,
         )
     }
 }
 
-impl ::protobuf::Message for GetTeeTypeRequest {
-    const NAME: &'static str = "GetTeeTypeRequest";
+impl ::protobuf::Message for GetTeeTypesRequest {
+    const NAME: &'static str = "GetTeeTypesRequest";
 
     fn is_initialized(&self) -> bool {
         true
@@ -1451,79 +1451,79 @@ impl ::protobuf::Message for GetTeeTypeRequest {
         &mut self.special_fields
     }
 
-    fn new() -> GetTeeTypeRequest {
-        GetTeeTypeRequest::new()
+    fn new() -> GetTeeTypesRequest {
+        GetTeeTypesRequest::new()
     }
 
     fn clear(&mut self) {
         self.special_fields.clear();
     }
 
-    fn default_instance() -> &'static GetTeeTypeRequest {
-        static instance: GetTeeTypeRequest = GetTeeTypeRequest {
+    fn default_instance() -> &'static GetTeeTypesRequest {
+        static instance: GetTeeTypesRequest = GetTeeTypesRequest {
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
     }
 }
 
-impl ::protobuf::MessageFull for GetTeeTypeRequest {
+impl ::protobuf::MessageFull for GetTeeTypesRequest {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("GetTeeTypeRequest").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("GetTeeTypesRequest").unwrap()).clone()
     }
 }
 
-impl ::std::fmt::Display for GetTeeTypeRequest {
+impl ::std::fmt::Display for GetTeeTypesRequest {
     fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
 
-impl ::protobuf::reflect::ProtobufValue for GetTeeTypeRequest {
+impl ::protobuf::reflect::ProtobufValue for GetTeeTypesRequest {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
-// @@protoc_insertion_point(message:attestation_agent.GetTeeTypeResponse)
+// @@protoc_insertion_point(message:attestation_agent.GetTeeTypesResponse)
 #[derive(PartialEq,Clone,Default,Debug)]
-pub struct GetTeeTypeResponse {
+pub struct GetTeeTypesResponse {
     // message fields
-    // @@protoc_insertion_point(field:attestation_agent.GetTeeTypeResponse.tee)
-    pub tee: ::std::string::String,
+    // @@protoc_insertion_point(field:attestation_agent.GetTeeTypesResponse.tee)
+    pub tee: ::std::vec::Vec<::std::string::String>,
     // special fields
-    // @@protoc_insertion_point(special_field:attestation_agent.GetTeeTypeResponse.special_fields)
+    // @@protoc_insertion_point(special_field:attestation_agent.GetTeeTypesResponse.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
 }
 
-impl<'a> ::std::default::Default for &'a GetTeeTypeResponse {
-    fn default() -> &'a GetTeeTypeResponse {
-        <GetTeeTypeResponse as ::protobuf::Message>::default_instance()
+impl<'a> ::std::default::Default for &'a GetTeeTypesResponse {
+    fn default() -> &'a GetTeeTypesResponse {
+        <GetTeeTypesResponse as ::protobuf::Message>::default_instance()
     }
 }
 
-impl GetTeeTypeResponse {
-    pub fn new() -> GetTeeTypeResponse {
+impl GetTeeTypesResponse {
+    pub fn new() -> GetTeeTypesResponse {
         ::std::default::Default::default()
     }
 
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::with_capacity(1);
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
-        fields.push(::protobuf::reflect::rt::v2::make_simpler_field_accessor::<_, _>(
+        fields.push(::protobuf::reflect::rt::v2::make_vec_simpler_accessor::<_, _>(
             "tee",
-            |m: &GetTeeTypeResponse| { &m.tee },
-            |m: &mut GetTeeTypeResponse| { &mut m.tee },
+            |m: &GetTeeTypesResponse| { &m.tee },
+            |m: &mut GetTeeTypesResponse| { &mut m.tee },
         ));
-        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<GetTeeTypeResponse>(
-            "GetTeeTypeResponse",
+        ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<GetTeeTypesResponse>(
+            "GetTeeTypesResponse",
             fields,
             oneofs,
         )
     }
 }
 
-impl ::protobuf::Message for GetTeeTypeResponse {
-    const NAME: &'static str = "GetTeeTypeResponse";
+impl ::protobuf::Message for GetTeeTypesResponse {
+    const NAME: &'static str = "GetTeeTypesResponse";
 
     fn is_initialized(&self) -> bool {
         true
@@ -1533,7 +1533,7 @@ impl ::protobuf::Message for GetTeeTypeResponse {
         while let Some(tag) = is.read_raw_tag_or_eof()? {
             match tag {
                 10 => {
-                    self.tee = is.read_string()?;
+                    self.tee.push(is.read_string()?);
                 },
                 tag => {
                     ::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -1547,18 +1547,18 @@ impl ::protobuf::Message for GetTeeTypeResponse {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u64 {
         let mut my_size = 0;
-        if !self.tee.is_empty() {
-            my_size += ::protobuf::rt::string_size(1, &self.tee);
-        }
+        for value in &self.tee {
+            my_size += ::protobuf::rt::string_size(1, &value);
+        };
         my_size += ::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::Result<()> {
-        if !self.tee.is_empty() {
-            os.write_string(1, &self.tee)?;
-        }
+        for v in &self.tee {
+            os.write_string(1, &v)?;
+        };
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
     }
@@ -1571,8 +1571,8 @@ impl ::protobuf::Message for GetTeeTypeResponse {
         &mut self.special_fields
     }
 
-    fn new() -> GetTeeTypeResponse {
-        GetTeeTypeResponse::new()
+    fn new() -> GetTeeTypesResponse {
+        GetTeeTypesResponse::new()
     }
 
     fn clear(&mut self) {
@@ -1580,29 +1580,29 @@ impl ::protobuf::Message for GetTeeTypeResponse {
         self.special_fields.clear();
     }
 
-    fn default_instance() -> &'static GetTeeTypeResponse {
-        static instance: GetTeeTypeResponse = GetTeeTypeResponse {
-            tee: ::std::string::String::new(),
+    fn default_instance() -> &'static GetTeeTypesResponse {
+        static instance: GetTeeTypesResponse = GetTeeTypesResponse {
+            tee: ::std::vec::Vec::new(),
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
     }
 }
 
-impl ::protobuf::MessageFull for GetTeeTypeResponse {
+impl ::protobuf::MessageFull for GetTeeTypesResponse {
     fn descriptor() -> ::protobuf::reflect::MessageDescriptor {
         static descriptor: ::protobuf::rt::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::rt::Lazy::new();
-        descriptor.get(|| file_descriptor().message_by_package_relative_name("GetTeeTypeResponse").unwrap()).clone()
+        descriptor.get(|| file_descriptor().message_by_package_relative_name("GetTeeTypesResponse").unwrap()).clone()
     }
 }
 
-impl ::std::fmt::Display for GetTeeTypeResponse {
+impl ::std::fmt::Display for GetTeeTypesResponse {
     fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
         ::protobuf::text_format::fmt(self, f)
     }
 }
 
-impl ::protobuf::reflect::ProtobufValue for GetTeeTypeResponse {
+impl ::protobuf::reflect::ProtobufValue for GetTeeTypesResponse {
     type RuntimeType = ::protobuf::reflect::rt::RuntimeTypeMessage<Self>;
 }
 
@@ -1622,19 +1622,19 @@ static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x13BindInitDataRequest\x12\x16\n\x06Digest\x18\x01\x20\x01(\x0cR\x06D\
     igest\"\x16\n\x14BindInitDataResponse\"4\n\x1aUpdateConfigurationRequest\
     \x12\x16\n\x06config\x18\x01\x20\x01(\tR\x06config\"\x1d\n\x1bUpdateConf\
-    igurationResponse\"\x13\n\x11GetTeeTypeRequest\"&\n\x12GetTeeTypeRespons\
-    e\x12\x10\n\x03tee\x18\x01\x20\x01(\tR\x03tee2\x84\x05\n\x17AttestationA\
-    gentService\x12\\\n\x0bGetEvidence\x12%.attestation_agent.GetEvidenceReq\
-    uest\x1a&.attestation_agent.GetEvidenceResponse\x12S\n\x08GetToken\x12\"\
-    .attestation_agent.GetTokenRequest\x1a#.attestation_agent.GetTokenRespon\
-    se\x12\x83\x01\n\x18ExtendRuntimeMeasurement\x122.attestation_agent.Exte\
-    ndRuntimeMeasurementRequest\x1a3.attestation_agent.ExtendRuntimeMeasurem\
-    entResponse\x12_\n\x0cBindInitData\x12&.attestation_agent.BindInitDataRe\
-    quest\x1a'.attestation_agent.BindInitDataResponse\x12t\n\x13UpdateConfig\
-    uration\x12-.attestation_agent.UpdateConfigurationRequest\x1a..attestati\
-    on_agent.UpdateConfigurationResponse\x12Y\n\nGetTeeType\x12$.attestation\
-    _agent.GetTeeTypeRequest\x1a%.attestation_agent.GetTeeTypeResponseb\x06p\
-    roto3\
+    igurationResponse\"\x14\n\x12GetTeeTypesRequest\"'\n\x13GetTeeTypesRespo\
+    nse\x12\x10\n\x03tee\x18\x01\x20\x03(\tR\x03tee2\x87\x05\n\x17Attestatio\
+    nAgentService\x12\\\n\x0bGetEvidence\x12%.attestation_agent.GetEvidenceR\
+    equest\x1a&.attestation_agent.GetEvidenceResponse\x12S\n\x08GetToken\x12\
+    \".attestation_agent.GetTokenRequest\x1a#.attestation_agent.GetTokenResp\
+    onse\x12\x83\x01\n\x18ExtendRuntimeMeasurement\x122.attestation_agent.Ex\
+    tendRuntimeMeasurementRequest\x1a3.attestation_agent.ExtendRuntimeMeasur\
+    ementResponse\x12_\n\x0cBindInitData\x12&.attestation_agent.BindInitData\
+    Request\x1a'.attestation_agent.BindInitDataResponse\x12t\n\x13UpdateConf\
+    iguration\x12-.attestation_agent.UpdateConfigurationRequest\x1a..attesta\
+    tion_agent.UpdateConfigurationResponse\x12\\\n\x0bGetTeeTypes\x12%.attes\
+    tation_agent.GetTeeTypesRequest\x1a&.attestation_agent.GetTeeTypesRespon\
+    seb\x06proto3\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file
@@ -1664,8 +1664,8 @@ pub fn file_descriptor() -> &'static ::protobuf::reflect::FileDescriptor {
             messages.push(BindInitDataResponse::generated_message_descriptor_data());
             messages.push(UpdateConfigurationRequest::generated_message_descriptor_data());
             messages.push(UpdateConfigurationResponse::generated_message_descriptor_data());
-            messages.push(GetTeeTypeRequest::generated_message_descriptor_data());
-            messages.push(GetTeeTypeResponse::generated_message_descriptor_data());
+            messages.push(GetTeeTypesRequest::generated_message_descriptor_data());
+            messages.push(GetTeeTypesResponse::generated_message_descriptor_data());
             let mut enums = ::std::vec::Vec::with_capacity(0);
             ::protobuf::reflect::GeneratedFileDescriptor::new_generated(
                 file_descriptor_proto(),

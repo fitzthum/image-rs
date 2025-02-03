@@ -76,7 +76,7 @@ fn get_hash_algorithm(extra_params: serde_json::Value) -> Result<HashAlgorithm> 
     Ok(algorithm)
 }
 
-async fn build_request(tee: Tee) -> Request {
+async fn build_request(tees: Vec<Tee>) -> Request {
     let extra_params = get_request_extra_params().await;
 
     // Note that the Request includes the list of supported hash algorithms.
@@ -84,7 +84,7 @@ async fn build_request(tee: Tee) -> Request {
     // be used for future communications.
     Request {
         version: String::from(KBS_PROTOCOL_VERSION),
-        tee,
+        tees,
         extra_params,
     }
 }
@@ -143,16 +143,16 @@ impl KbsClient<Box<dyn EvidenceProvider>> {
     async fn rcar_handshake(&mut self) -> anyhow::Result<()> {
         let auth_endpoint = format!("{}/{KBS_PREFIX}/auth", self.kbs_host_url);
 
-        let tee = match &self._tee {
+        let tees = match &self._tees {
             ClientTee::Uninitialized => {
-                let tee = self.provider.get_tee_type().await?;
-                self._tee = ClientTee::Initialized(tee);
-                tee
+                let tees = self.provider.get_tee_types().await?;
+                self._tees = ClientTee::Initialized(tees.clone());
+                tees
             }
-            ClientTee::Initialized(tee) => *tee,
+            ClientTee::Initialized(tees) => tees.clone(),
         };
 
-        let request = build_request(tee).await;
+        let request = build_request(tees.clone()).await;
 
         debug!("send auth request {request:?} to {auth_endpoint}");
 
@@ -198,7 +198,7 @@ impl KbsClient<Box<dyn EvidenceProvider>> {
         let runtime_data =
             serde_json::to_string(&runtime_data).context("serialize runtime data failed")?;
         let evidence = self
-            .generate_evidence(tee, runtime_data, challenge.nonce, algorithm)
+            .generate_evidence(tees, runtime_data, challenge.nonce, algorithm)
             .await?;
         debug!("get evidence with challenge: {evidence}");
 
@@ -260,15 +260,17 @@ impl KbsClient<Box<dyn EvidenceProvider>> {
 
     async fn generate_evidence(
         &self,
-        tee: Tee,
+        tees: Vec<Tee>,
         runtime_data: String,
         nonce: String,
         algorithm: HashAlgorithm,
     ) -> Result<String> {
         debug!("Challenge nonce: {nonce}, algorithm: {algorithm:?}");
 
+        // for now just handle the runtime data based on the first TEE
+        // in the list. this will be fixed in future commit
         let hashed_data = self
-            .hash_runtime_data(runtime_data, nonce, tee, algorithm)
+            .hash_runtime_data(runtime_data, nonce, tees[0], algorithm)
             .await?;
 
         let tee_evidence = self
