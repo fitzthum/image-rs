@@ -37,19 +37,18 @@ impl NativeEvidenceProvider {
 #[async_trait]
 impl EvidenceProvider for NativeEvidenceProvider {
     async fn get_evidence(&self, runtime_data: Vec<u8>) -> Result<String> {
-        let mut evidence: Vec<(Tee, String)> = vec![];
+        let mut evidence: Vec<(Tee, String, String)> = vec![];
         for (tee, attester) in &self.attesters {
             let ev = attester
                 .get_evidence(runtime_data.clone())
                 .await
                 .map_err(|e| Error::GetEvidence(e.to_string()))?;
 
-            evidence.push((*tee, ev));
+            evidence.push((*tee, attester.device_class(), ev));
         }
 
-        Ok(serde_json::to_string(&evidence).map_err(|e| {
-            Error::GetEvidence(format!("Failed to serialize evidence {e}"))
-        })?)
+        Ok(serde_json::to_string(&evidence)
+            .map_err(|e| Error::GetEvidence(format!("Failed to serialize evidence {e}")))?)
     }
 
     async fn get_tee_types(&self) -> Result<Vec<Tee>> {
